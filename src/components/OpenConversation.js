@@ -21,7 +21,7 @@ function OpenConversation() {
     }
 
   return (
-    <div className='d-flex flex-column flex-grow-1'>
+    <div className='d-flex flex-column flex-grow-1 openconvo'>
         <div className='flex-grow-1 overflow-auto'>
             <div className='d-flex flex-column align-items-start justify-content-end px-3'>
                 {selectedConversation.messages.map((message, index) => {
@@ -33,7 +33,7 @@ function OpenConversation() {
                             ${message.fromMe ? 'align-self-end' : ''}`}
                             key={index}
                         >
-                            <div className={`py-1 px-1 rounded
+                            <div className={`py-1 px-2 rounded-0
                                 ${message.fromMe ? 'bg-primary text-white' : 'border align-self-start'}`}>
                                 {message.text}
                             </div>
@@ -54,9 +54,9 @@ function OpenConversation() {
                         required
                         value={text}
                         onChange={e=> setText(e.target.value)}
-                        style={{height: '75px', resize: 'none'}}
+                        style={{height: '75px', resize: 'none', backgroundColor:'aliceblue'}}
                     />
-                    <Button type='submit'>Send</Button>
+                    <Button className='rounded-0' type='submit'>Send</Button>
                 </InputGroup>
             </Form.Group>
         </Form>

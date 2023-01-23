@@ -9,16 +9,21 @@ export function useSocket(){
 
 export function SocketProvider({id, children}) {
 
+ 
+
     const [socket, setSocket] = useState()
 
     useEffect(() => {
         const newSocket = io('http://localhost:5000',
-        { query: {id}}
+        {auth: {
+            token: id
+          }}
         )
         setSocket(newSocket)
-        console.log({id})
+        console.log(id, 'socket connected in frontend')
 
-        return () => newSocket.close()
+        return () => {newSocket.close()
+        console.log(id, 'socket connected in frontend 2')}
     },[id])
 
     

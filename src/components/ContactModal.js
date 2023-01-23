@@ -4,14 +4,15 @@ import { useRef } from 'react'
 import { useContacts } from '../context/ContactsProvider'
 
 function ContactModal({closeModal}) {
-const idref = useRef()
+const mobileref = useRef()
 const nameref= useRef()
 const { createContact } = useContacts()
 
 function handleSubmit(e){
     e.preventDefault()
 
-    createContact(idref.current.value, nameref.current.value)
+    createContact(mobileref.current.value, nameref.current.value)
+    
 
     closeModal()
 }
@@ -22,8 +23,8 @@ function handleSubmit(e){
         <Modal.Body>
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
-                    <Form.Label>id</Form.Label>
-                    <Form.Control type='text' ref={idref} required/>
+                    <Form.Label>mobile</Form.Label>
+                    <Form.Control type='text' ref={mobileref} required/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>name</Form.Label>

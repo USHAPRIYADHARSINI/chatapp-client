@@ -9,7 +9,7 @@ export function useConversations(){
     return useContext(ConversationsContext)
 }
 
-export function ConversationsProvider({id, children}) {
+export function ConversationsProvider({id, children}) { //id is mobile number
 
 const [conversations, setConversations] = useLocalStorage('conversations',[])
 const { contacts } = useContacts()
@@ -18,8 +18,7 @@ const socket = useSocket()
 
 function createConversation( recipients ){
     setConversations(prevConversations => {
-        return [...prevConversations , {recipients, messages : []
-        }]
+        return [...prevConversations , {recipients, messages : []} ]
     })
 }
 
